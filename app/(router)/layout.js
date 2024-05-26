@@ -4,11 +4,11 @@ import Header from './_components/Header'
 
 function Layout({children}) {
   return (
-    <div>
-        <div className='sm:w-64 sm:block fixed'>
+    <div className='flex'>
+        <div className='sm:w-64 sm:block fixed hidden sm:inline-block'>
           <SideNav />
           </div>
-          <div className='ml-64'>
+          <div className='ml-64 w-full'>
             <Header/>
             {children}
           </div>
