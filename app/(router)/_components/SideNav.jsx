@@ -1,42 +1,60 @@
 'use client';
-import { BadgeIcon, BookOpen, GraduationCap, LayoutGrid, Mail } from 'lucide-react'
+import { useUser } from '@clerk/nextjs';
+import { BadgeIcon, BookOpen, GraduationCap, LayoutDashboard, LayoutGrid, Mail } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import React, { useEffect } from 'react'
 
 function SideNav() {
+  const {user}=useUser();
   const menu=[
+    {
+      id:8,
+      name:'Dashboard',
+      icon:LayoutDashboard,
+      path:'/dashboard',
+      auth:user
+    },
     {
       id:1,
       name:'All Courses',
       icon:BookOpen,
-      path:'/courses'
+      path:'/courses',
+      auth:true
     },
     {
       id:4,
       name:'Store',
       icon:LayoutGrid,
-      path:'/store'
+      path:'/store',
+      auth:true
+
     },
 
     {
       id:2,
       name:'Membership',
       icon:BadgeIcon,
-      path:'/membership'
+      path:'/membership',
+      auth:true
+
     },
     {
       id:5,
       name:'Newsletter',
       icon:Mail,
-      path:'/newsletter'
+      path:'/newsletter',
+      auth:true
+
     },
     {
       id:3,
       name:'Be Instructor',
       icon:GraduationCap,
-      path:'/instructor' // Assuming you want to add a path for this item too
+      path:'/instructor',
+      auth:true
+      // Assuming you want to add a path for this item too
     }
 
   ]
@@ -49,7 +67,7 @@ function SideNav() {
         <Image src='/vercel.svg' alt='logo' width={170} height={80}/>
         <hr className='mt-7'></hr>
         <div className='mt-5'>
-          {menu.map((item,index)=>(
+          {menu.map((item,index)=>item.auth&&(
             <Link href={item.path} key={item.id}> {/* Added key prop */}
               <div className={`group flex gap-3 mt-2 p-3 text-[18px] items-center
               text-gray-500 cursor-pointer

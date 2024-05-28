@@ -33,7 +33,7 @@ function CoursePreview({ params }) {
       {/* course content */}
 
       <div>
-        <CourseEnrollSection />
+        <CourseEnrollSection courseInfo={courseInfo} />
 
         <CourseContentSection courseInfo={courseInfo} />
       </div>
