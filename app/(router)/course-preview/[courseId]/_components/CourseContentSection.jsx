@@ -1,7 +1,7 @@
 import { Lock, Play } from 'lucide-react'
 import React, { useState } from 'react'
 
-function CourseContentSection({ courseInfo ,isUserAlreadyEnrolled}) {
+function CourseContentSection({ courseInfo ,isUserAlreadyEnrolled,watchMode=false,setActiveChapterIndex}) {
     const [activeIndex, setActiveIndex] = useState(0);
     return (
         <div className='p-3 bg-white rounded-sm mt-3'>
@@ -12,6 +12,9 @@ function CourseContentSection({ courseInfo ,isUserAlreadyEnrolled}) {
                          hover:bg-gray-200 hover:text-gray-500
                         border rounded-sm px-4 cursor-pointer ${activeIndex === index ? 'bg-primary text-white' : ''}
                         ${isUserAlreadyEnrolled&&'hover:bg-primary hover:text-white' }`}
+                        onClick={()=>{watchMode&&setActiveChapterIndex(index);
+                            watchMode&&setActiveIndex(index)
+                        }}
                     >
                         {index + 1}. {item.name}
                         {activeIndex === index ||isUserAlreadyEnrolled?

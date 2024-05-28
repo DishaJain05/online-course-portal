@@ -5,7 +5,7 @@ const MASTER_URL = `https://api-ap-south-1.hygraph.com/v2/${process.env.NEXT_PUB
 const getAllCourseList = async () => {
     const query = gql`
     query MyQuery {
-        courseLists {
+        courseLists(first:20,orderBy:createdAt_DESC) {
           id
           name
           free
@@ -131,11 +131,46 @@ const checkUserEnrolledToCourse=async(courseId,email)=>{
     const result= await request(MASTER_URL,query);
     return result;
 }
+const getUserEnrolledCourseDetails=async(id,email)=>{
+    const query=gql`
+    query MyQuery {
+        userEnrollCourses(where: {id: "`+id+`", userEmail: "`+email+`"}) {
+          courseId
+          id
+          userEmail
+          courseList {
+            banner {
+              url
+            }
+            chapter {
+              ... on Chapter {
+                id
+                name
+                video {
+                  url
+                }
+              }
+            }
+            description
+            free
+            id
+            name
+            slug
+            totalChapters
+          }
+        }
+      }
+      
+    `
+    const result= await request(MASTER_URL,query);
+    return result;
+}
 
 export default {
     getAllCourseList,
     getSideBanner,
     getCourseById,
     enrollToCourse,
-    checkUserEnrolledToCourse
+    checkUserEnrolledToCourse,
+    getUserEnrolledCourseDetails
 };
