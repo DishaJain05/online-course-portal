@@ -23,14 +23,14 @@ function SideNav() {
       path:'/courses',
       auth:true
     },
-    {
-      id:4,
-      name:'Store',
-      icon:LayoutGrid,
-      path:'/store',
-      auth:true
+    // {
+    //   id:4,
+    //   name:'Store',
+    //   icon:LayoutGrid,
+    //   path:'/store',
+    //   auth:true
 
-    },
+    // },
 
     {
       id:2,
@@ -40,14 +40,14 @@ function SideNav() {
       auth:true
 
     },
-    {
-      id:5,
-      name:'Newsletter',
-      icon:Mail,
-      path:'/newsletter',
-      auth:true
+    // {
+    //   id:5,
+    //   name:'Newsletter',
+    //   icon:Mail,
+    //   path:'/newsletter',
+    //   auth:true
 
-    },
+    // },
     {
       id:3,
       name:'Be Instructor',

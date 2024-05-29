@@ -5,7 +5,7 @@ const MASTER_URL = `https://api-ap-south-1.hygraph.com/v2/${process.env.NEXT_PUB
 const getAllCourseList = async () => {
     const query = gql`
     query MyQuery {
-        courseLists(first:20,orderBy:createdAt_DESC) {
+        courseLists(first:20) {
           id
           name
           free

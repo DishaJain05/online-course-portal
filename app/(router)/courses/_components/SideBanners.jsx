@@ -14,11 +14,11 @@ function SideBanners() {
         })
     }
   return (
-    <div>
+    <div className='flex flex-col gap-6'>
       {sideBannerList.map((item,index)=>(
         <div key={index}>
             <Image src={item.banner.url} alt='banner' width={500}
-             height={300} className='rounded-xl cursor-pointer'
+             height={300} className='rounded-xl cursor-pointer gap-6'
              onClick={()=>window.open(item.url)}/>
             </div>
         ))}
