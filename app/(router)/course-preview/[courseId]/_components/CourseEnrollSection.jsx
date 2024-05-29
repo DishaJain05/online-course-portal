@@ -7,7 +7,7 @@ import React, { useEffect } from 'react';
 import { toast } from 'sonner';
 
 function CourseEnrollSection({ courseInfo, isUserAlreadyEnrolled }) {
-  const membership = true; // This should be replaced with actual membership check logic
+  const membership = false; // This should be replaced with actual membership check logic
   const { user } = useUser();
   const router = useRouter();
 
